@@ -1,0 +1,72 @@
+Projeto: Triagem de E-mails de Suporte com workflow em markdown, contrato, tool calling e validacao
+
+Objetivo operacional:
+Automatizar a triagem inicial de e-mails de suporte para reduzir tempo de resposta e padronizar o encaminhamento para o setor correto.
+
+Contexto do POP:
+- Entrada: e-mail com remetente, titulo e corpo.
+- Processamento: extracao de informacoes, classificacao de prioridade e inferencia do setor de destino.
+- Saida: JSON validado por contrato + mensagem de encaminhamento + chamada de ferramenta de envio.
+
+Fluxo obrigatorio (na ordem):
+1) Ler e-mail de entrada (consultar_email).
+2) Transformar em JSON com campos basicos: remetente, titulo, corpo.
+3) Extrair nomes_relevantes (lista).
+4) Extrair palavras_chave (lista).
+5) Inferir prioridade em {baixa, media, alta}.
+6) Inferir setor_de_destino em {suporte_tecnico, financeiro, comercial, duvidas_gerais}.
+7) Gerar justificativa_classificacao.
+8) Construir mensagem_encaminhamento.
+9) Validar saida no contrato JSON Schema.
+10) Executar tool calling encaminhar_email.
+11) Registrar logs de execucao e protocolo.
+
+Arquivos de orquestracao obrigatorios:
+- workflow_triagem.md
+- .agents/workflows/triagem-email-suporte.yaml
+- fases/fase-1-workflows.md
+- fases/fase-2-workflows-contratos.md
+- fases/fase-3-tool-calling-mcp.md
+
+Regras de negocio:
+- Nao inventar dados ausentes.
+- Se o texto for insuficiente, classificar como duvidas_gerais e sinalizar necessidade de revisao humana.
+- Em falha de validacao de contrato, nao encaminhar e registrar erro.
+- Em falha da ferramenta externa, gerar status de falha com tentativa controlada.
+- Em baixa confianca de classificacao, solicitar revisao humana.
+
+Ferramentas (tool calling):
+- consultar_email(email_id) -> retorna {email_id, remetente, titulo, corpo}
+- encaminhar_email(payload) -> retorna {protocolo, status}
+
+Contrato esperado da saida (resumo):
+- email_id: string
+- remetente: string
+- titulo: string
+- corpo: string
+- nomes_relevantes: string[]
+- palavras_chave: string[]
+- prioridade: baixa|media|alta
+- setor_de_destino: suporte_tecnico|financeiro|comercial|duvidas_gerais
+- justificativa_classificacao: string
+- mensagem_encaminhamento: string
+- tool_calls: array
+- protocolo_encaminhamento: string
+
+Criterios de validacao:
+- Completude dos campos obrigatorios
+- Aderencia aos enums
+- Coerencia entre setor e palavras-chave
+- Ausencia de alucinacao factual
+- Rastreabilidade das tool calls
+
+Entregaveis esperados:
+- workflow funcional em markdown
+- contrato/schema aplicado
+- logs de execucao
+- saida JSON final validada
+- registro de erros e casos limite
+
+Formato de resposta do agente durante o workflow:
+- Sempre retornar objetos JSON validos conforme contrato.
+- Quando houver erro, retornar JSON de erro estruturado com causa e acao sugerida.

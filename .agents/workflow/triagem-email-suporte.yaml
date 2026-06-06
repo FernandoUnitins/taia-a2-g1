@@ -1,0 +1,194 @@
+workflow:
+  id: triagem-email-suporte-projeto-final
+  nome: Triagem contratual de e-mails de suporte
+  versao: "2.0"
+  fases:
+    - fase_1_workflows
+    - fase_2_workflows_contratos
+    - fase_3_tool_calling
+  objetivo: >
+    Transformar solicitações de e-mail em um processo de triagem padronizado,
+    validável e rastreável, com classificação de prioridade, inferência de setor
+    de destino e mensagem de encaminhamento.
+
+entradas:
+  arquivos_obrigatorios:
+    - nome: emails_entrada.json
+      tipo: json
+      origem: base de cenários do projeto
+
+restricoes:
+  gerais:
+    - Não inventar informações ausentes no corpo do e-mail.
+    - Prioridade deve ser apenas baixa, media ou alta.
+    - Setor deve ser apenas suporte_tecnico, financeiro, comercial ou duvidas_gerais.
+    - Não encaminhar quando houver violação do contrato.
+    - Registrar incerteza quando faltar contexto para classificação segura.
+
+etapas:
+  - id: carregar_entrada
+    fase: 1
+    descricao: Ler o arquivo de entrada com a lista de e-mails.
+    saida_esperada: lote_emails_carregado
+
+  - id: extrair_campos_basicos
+    fase: 1
+    descricao: Converter cada e-mail para objeto base com remetente, titulo e corpo.
+    contrato_saida:
+      formato: json
+      campos_obrigatorios:
+        - email_id
+        - remetente
+        - titulo
+        - corpo
+
+  - id: enriquecer_conteudo
+    fase: 1
+    descricao: Extrair nomes relevantes, palavras-chave, prioridade e setor de destino.
+    contrato_saida:
+      campos_obrigatorios:
+        - nomes_relevantes
+        - palavras_chave
+        - prioridade
+        - setor_de_destino
+
+  - id: construir_mensagem_encaminhamento
+    fase: 1
+    descricao: Gerar mensagem de encaminhamento com resumo da classificação.
+    contrato_saida:
+      campos_obrigatorios:
+        - mensagem_encaminhamento
+        - justificativa_classificacao
+
+  - id: validar_saida_contrato
+    fase: 2
+    descricao: Validar cada registro com base em schema_triagem.json.
+    entradas:
+      - saida_intermediaria_triagem
+      - schema_triagem.json
+    criterio_conclusao:
+      - Todos os registros válidos ou erros estruturais documentados.
+
+  - id: corrigir_erros_estruturais
+    fase: 2
+    descricao: Ajustar registros inválidos antes do encaminhamento.
+    criterio_conclusao:
+      - Pelo menos uma rodada de correção aplicada quando houver erro.
+
+  - id: executar_tool_calling
+    fase: 3
+    descricao: Executar chamada lógica de consulta e encaminhamento de e-mail.
+    ferramentas_permitidas:
+      - consultar_email
+      - encaminhar_email
+    contrato_saida:
+      campos_obrigatorios:
+        - tool_calls
+        - protocolo_encaminhamento
+
+  - id: gerar_logs_e_relatorio
+    fase: 3
+    descricao: Registrar evidências de execução e validação.
+    saidas:
+      - saida_triagem.json
+      - log_execucao_triagem.md
+      - relatorio_validacao_triagem.md
+
+contratos:
+  triagem_email:
+    campos_obrigatorios:
+      - email_id
+      - remetente
+      - titulo
+      - corpo
+      - nomes_relevantes
+      - palavras_chave
+      - prioridade
+      - setor_de_destino
+      - justificativa_classificacao
+      - mensagem_encaminhamento
+      - tool_calls
+      - protocolo_encaminhamento
+
+    regras:
+      email_id:
+        tipo: string
+        minimo_caracteres: 3
+
+      remetente:
+        tipo: string
+        minimo_caracteres: 5
+
+      titulo:
+        tipo: string
+        minimo_caracteres: 3
+
+      corpo:
+        tipo: string
+        minimo_caracteres: 10
+
+      nomes_relevantes:
+        tipo: array
+        itens_tipo: string
+
+      palavras_chave:
+        tipo: array
+        itens_tipo: string
+        minimo_itens: 1
+
+      prioridade:
+        tipo: string
+        valores_permitidos:
+          - baixa
+          - media
+          - alta
+
+      setor_de_destino:
+        tipo: string
+        valores_permitidos:
+          - suporte_tecnico
+          - financeiro
+          - comercial
+          - duvidas_gerais
+
+      tool_calls:
+        tipo: array
+        minimo_itens: 2
+
+      protocolo_encaminhamento:
+        tipo: string
+        minimo_caracteres: 5
+
+validacao:
+  fase_1:
+    criterios:
+      - Todos os e-mails têm estrutura base.
+      - Atributos de enriquecimento foram preenchidos.
+      - Mensagem de encaminhamento foi produzida.
+
+  fase_2:
+    criterios:
+      - Validação em schema executada.
+      - Erros estruturais identificados com justificativa.
+      - Correções aplicadas quando necessário.
+
+  fase_3:
+    criterios:
+      - Tool calls registradas por registro.
+      - Protocolo de encaminhamento presente.
+      - Evidências finais geradas em arquivos markdown/json.
+
+politica_de_incerteza:
+  alta:
+    - Termos explícitos e contexto completo no e-mail.
+  media:
+    - Contexto suficiente, mas com ambiguidade parcial.
+  baixa:
+    - Conteúdo incompleto, contraditório ou insuficiente.
+
+saida_final:
+  arquivos:
+    - saida_triagem.json
+    - log_execucao_triagem.md
+    - relatorio_validacao_triagem.md
+  finalidade: Triagem estruturada, validada e auditável para encaminhamento.
