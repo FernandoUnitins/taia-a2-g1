@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contrato de Saida - Triagem de E-mails",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "email_id",
+    "remetente",
+    "titulo",
+    "corpo",
+    "nomes_relevantes",
+    "palavras_chave",
+    "prioridade",
+    "setor_de_destino",
+    "justificativa_classificacao",
+    "mensagem_encaminhamento",
+    "tool_calls",
+    "protocolo_encaminhamento"
+  ],
+  "properties": {
+    "email_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "remetente": {
+      "type": "string",
+      "minLength": 3
+    },
+    "titulo": {
+      "type": "string",
+      "minLength": 3
+    },
+    "corpo": {
+      "type": "string",
+      "minLength": 10
+    },
+    "nomes_relevantes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 2
+      },
+      "uniqueItems": true
+    },
+    "palavras_chave": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 2
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "prioridade": {
+      "type": "string",
+      "enum": [
+        "baixa",
+        "media",
+        "alta"
+      ]
+    },
+    "setor_de_destino": {
+      "type": "string",
+      "enum": [
+        "suporte_tecnico",
+        "financeiro",
+        "comercial",
+        "duvidas_gerais"
+      ]
+    },
+    "justificativa_classificacao": {
+      "type": "string",
+      "minLength": 15
+    },
+    "mensagem_encaminhamento": {
+      "type": "string",
+      "minLength": 20
+    },
+    "tool_calls": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "tool",
+          "status",
+          "timestamp",
+          "details"
+        ],
+        "properties": {
+          "tool": {
+            "type": "string",
+            "enum": [
+              "consultar_email",
+              "encaminhar_email"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "falha",
+              "pendente"
+            ]
+          },
+          "timestamp": {
+            "type": "string",
+            "minLength": 10
+          },
+          "details": {
+            "type": "string",
+            "minLength": 2
+          }
+        }
+      }
+    },
+    "protocolo_encaminhamento": {
+      "type": "string",
+      "minLength": 5
+    }
+  }
+}

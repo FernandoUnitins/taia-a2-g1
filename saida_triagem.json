@@ -1,0 +1,205 @@
+[
+  {
+    "email_id": "EML-001",
+    "remetente": "cliente1@empresa.com",
+    "titulo": "Erro critico no acesso ao sistema",
+    "corpo": "Boa noite equipe. Desde ontem nao consigo acessar o portal. Aparece erro 500 no login e preciso disso urgente para fechar pedidos. Assinado, Carlos Mendes.",
+    "nomes_relevantes": [
+      "Carlos Mendes"
+    ],
+    "palavras_chave": [
+      "erro 500",
+      "login",
+      "acesso",
+      "portal",
+      "urgente"
+    ],
+    "prioridade": "alta",
+    "setor_de_destino": "suporte_tecnico",
+    "justificativa_classificacao": "Classificação como suporte técnico de alta prioridade porque o cliente relata um erro 500 que o impede de acessar o portal, inviabilizando o fechamento de pedidos urgentes.",
+    "mensagem_encaminhamento": "Encaminhamento automático de triagem\nEmail: EML-001\nSetor de destino: suporte_tecnico\nPrioridade: alta\nPalavras-chave: erro 500, login, acesso, portal, urgente\nResumo: Erro critico no acesso ao sistema",
+    "tool_calls": [
+      {
+        "tool": "consultar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:31",
+        "details": "Email EML-001 consultado para recuperar conteudo base."
+      },
+      {
+        "tool": "encaminhar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:32",
+        "details": "Protocolo gerado: PRT-EML-001-20260605185732-OK"
+      }
+    ],
+    "protocolo_encaminhamento": "PRT-EML-001-20260605185732-OK"
+  },
+  {
+    "email_id": "EML-002",
+    "remetente": "financeiro.cliente@empresa.com",
+    "titulo": "Solicitacao de segunda via de boleto",
+    "corpo": "Prezados, favor enviar a segunda via do boleto de maio. O vencimento passou e precisamos regularizar hoje. Atenciosamente, Ana Paula Souza.",
+    "nomes_relevantes": [
+      "Ana Paula Souza"
+    ],
+    "palavras_chave": [
+      "segunda via",
+      "boleto",
+      "vencimento",
+      "regularizar"
+    ],
+    "prioridade": "alta",
+    "setor_de_destino": "financeiro",
+    "justificativa_classificacao": "Direcionado ao setor financeiro de alta prioridade pois se trata de uma solicitação urgente de segunda via de boleto vencido que necessita de regularização imediata hoje.",
+    "mensagem_encaminhamento": "Encaminhamento automático de triagem\nEmail: EML-002\nSetor de destino: financeiro\nPrioridade: alta\nPalavras-chave: segunda via, boleto, vencimento, regularizar\nResumo: Solicitacao de segunda via de boleto",
+    "tool_calls": [
+      {
+        "tool": "consultar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:33",
+        "details": "Email EML-002 consultado para recuperar conteudo base."
+      },
+      {
+        "tool": "encaminhar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:34",
+        "details": "Protocolo gerado: PRT-EML-002-20260605185734-OK"
+      }
+    ],
+    "protocolo_encaminhamento": "PRT-EML-002-20260605185734-OK"
+  },
+  {
+    "email_id": "EML-003",
+    "remetente": "contato@lojax.com",
+    "titulo": "Pedido de proposta comercial",
+    "corpo": "Ola, somos da Loja X e queremos receber proposta para o plano corporativo com 40 usuarios. Podem enviar valores e condicoes?",
+    "nomes_relevantes": [
+      "Loja X"
+    ],
+    "palavras_chave": [
+      "proposta comercial",
+      "plano corporativo",
+      "usuarios",
+      "valores",
+      "condicoes"
+    ],
+    "prioridade": "media",
+    "setor_de_destino": "comercial",
+    "justificativa_classificacao": "Classificado no setor comercial com prioridade média por tratar-se de uma solicitação padrão de cotação e proposta para plano corporativo de 40 usuários.",
+    "mensagem_encaminhamento": "Encaminhamento automático de triagem\nEmail: EML-003\nSetor de destino: comercial\nPrioridade: media\nPalavras-chave: proposta comercial, plano corporativo, usuarios, valores, condicoes\nResumo: Pedido de proposta comercial",
+    "tool_calls": [
+      {
+        "tool": "consultar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:35",
+        "details": "Email EML-003 consultado para recuperar conteudo base."
+      },
+      {
+        "tool": "encaminhar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:36",
+        "details": "Protocolo gerado: PRT-EML-003-20260605185736-OK"
+      }
+    ],
+    "protocolo_encaminhamento": "PRT-EML-003-20260605185736-OK"
+  },
+  {
+    "email_id": "EML-004",
+    "remetente": "usuario4@email.com",
+    "titulo": "Duvida sobre cancelamento",
+    "corpo": "Gostaria de saber qual o prazo para cancelamento sem multa. Nao encontrei essa informacao no site.",
+    "nomes_relevantes": [],
+    "palavras_chave": [
+      "prazo",
+      "cancelamento",
+      "multa",
+      "informacao"
+    ],
+    "prioridade": "baixa",
+    "setor_de_destino": "duvidas_gerais",
+    "justificativa_classificacao": "Direcionado para dúvidas gerais com prioridade baixa por se tratar de uma consulta informativa sobre prazos de cancelamento e política de multas.",
+    "mensagem_encaminhamento": "Encaminhamento automático de triagem\nEmail: EML-004\nSetor de destino: duvidas_gerais\nPrioridade: baixa\nPalavras-chave: prazo, cancelamento, multa, informacao\nResumo: Duvida sobre cancelamento",
+    "tool_calls": [
+      {
+        "tool": "consultar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:37",
+        "details": "Email EML-004 consultado para recuperar conteudo base."
+      },
+      {
+        "tool": "encaminhar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:38",
+        "details": "Protocolo gerado: PRT-EML-004-20260605185738-OK"
+      }
+    ],
+    "protocolo_encaminhamento": "PRT-EML-004-20260605185738-OK"
+  },
+  {
+    "email_id": "EML-005",
+    "remetente": "suporte.cliente@empresa.com",
+    "titulo": "Falha intermitente no aplicativo",
+    "corpo": "O aplicativo fecha sozinho em varios celulares Android. O problema comecou hoje de manha e esta afetando nosso atendimento. Responsavel: Maria Clara Ribeiro.",
+    "nomes_relevantes": [
+      "Maria Clara Ribeiro"
+    ],
+    "palavras_chave": [
+      "falha intermitente",
+      "aplicativo",
+      "Android",
+      "fechando sozinho",
+      "atendimento"
+    ],
+    "prioridade": "alta",
+    "setor_de_destino": "suporte_tecnico",
+    "justificativa_classificacao": "Direcionado para o suporte técnico com prioridade alta porque a falha intermitente no aplicativo móvel Android está impactando diretamente a operação e o atendimento do cliente.",
+    "mensagem_encaminhamento": "Encaminhamento automático de triagem\nEmail: EML-005\nSetor de destino: suporte_tecnico\nPrioridade: alta\nPalavras-chave: falha intermitente, aplicativo, Android, fechando sozinho, atendimento\nResumo: Falha intermitente no aplicativo",
+    "tool_calls": [
+      {
+        "tool": "consultar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:39",
+        "details": "Email EML-005 consultado para recuperar conteudo base."
+      },
+      {
+        "tool": "encaminhar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:40",
+        "details": "Protocolo gerado: PRT-EML-005-20260605185740-OK"
+      }
+    ],
+    "protocolo_encaminhamento": "PRT-EML-005-20260605185740-OK"
+  },
+  {
+    "email_id": "EML-006",
+    "remetente": "compras@novonegocio.com",
+    "titulo": "Interesse em adquirir licencas",
+    "corpo": "Temos interesse em contratar licencas anuais. Precisamos de detalhes do plano premium e possibilidade de desconto para contrato de 12 meses.",
+    "nomes_relevantes": [],
+    "palavras_chave": [
+      "licencas anuais",
+      "plano premium",
+      "desconto",
+      "contrato"
+    ],
+    "prioridade": "media",
+    "setor_de_destino": "comercial",
+    "justificativa_classificacao": "Classificado como comercial de prioridade média, visto que expressa interesse na contratação de licenças anuais do plano premium com questionamento de desconto.",
+    "mensagem_encaminhamento": "Encaminhamento automático de triagem\nEmail: EML-006\nSetor de destino: comercial\nPrioridade: media\nPalavras-chave: licencas anuais, plano premium, desconto, contrato\nResumo: Interesse em adquirir licencas",
+    "tool_calls": [
+      {
+        "tool": "consultar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:41",
+        "details": "Email EML-006 consultado para recuperar conteudo base."
+      },
+      {
+        "tool": "encaminhar_email",
+        "status": "ok",
+        "timestamp": "2026-06-05T18:57:42",
+        "details": "Protocolo gerado: PRT-EML-006-20260605185742-OK"
+      }
+    ],
+    "protocolo_encaminhamento": "PRT-EML-006-20260605185742-OK"
+  }
+]

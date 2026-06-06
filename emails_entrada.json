@@ -1,0 +1,38 @@
+[
+  {
+    "email_id": "EML-001",
+    "remetente": "cliente1@empresa.com",
+    "titulo": "Erro critico no acesso ao sistema",
+    "corpo": "Boa noite equipe. Desde ontem nao consigo acessar o portal. Aparece erro 500 no login e preciso disso urgente para fechar pedidos. Assinado, Carlos Mendes."
+  },
+  {
+    "email_id": "EML-002",
+    "remetente": "financeiro.cliente@empresa.com",
+    "titulo": "Solicitacao de segunda via de boleto",
+    "corpo": "Prezados, favor enviar a segunda via do boleto de maio. O vencimento passou e precisamos regularizar hoje. Atenciosamente, Ana Paula Souza."
+  },
+  {
+    "email_id": "EML-003",
+    "remetente": "contato@lojax.com",
+    "titulo": "Pedido de proposta comercial",
+    "corpo": "Ola, somos da Loja X e queremos receber proposta para o plano corporativo com 40 usuarios. Podem enviar valores e condicoes?"
+  },
+  {
+    "email_id": "EML-004",
+    "remetente": "usuario4@email.com",
+    "titulo": "Duvida sobre cancelamento",
+    "corpo": "Gostaria de saber qual o prazo para cancelamento sem multa. Nao encontrei essa informacao no site."
+  },
+  {
+    "email_id": "EML-005",
+    "remetente": "suporte.cliente@empresa.com",
+    "titulo": "Falha intermitente no aplicativo",
+    "corpo": "O aplicativo fecha sozinho em varios celulares Android. O problema comecou hoje de manha e esta afetando nosso atendimento. Responsavel: Maria Clara Ribeiro."
+  },
+  {
+    "email_id": "EML-006",
+    "remetente": "compras@novonegocio.com",
+    "titulo": "Interesse em adquirir licencas",
+    "corpo": "Temos interesse em contratar licencas anuais. Precisamos de detalhes do plano premium e possibilidade de desconto para contrato de 12 meses."
+  }
+]
