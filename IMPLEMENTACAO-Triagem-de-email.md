@@ -9,7 +9,7 @@ Esta implementacao segue o formato solicitado em aula:
 5. Orquestracao controlada
 
 ## Artefatos principais
-- workflow_triagem.md
+- .agents/workflows/workflow_triagem.md
 - .agents/workflows/triagem-email-suporte.yaml
 - fases/fase-0-skills.md
 - fases/fase-1-workflows.md

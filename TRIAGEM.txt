@@ -22,7 +22,7 @@ Fluxo obrigatorio (na ordem):
 11) Registrar logs de execucao e protocolo.
 
 Arquivos de orquestracao obrigatorios:
-- workflow_triagem.md
+- .agents/workflows/workflow_triagem.md
 - .agents/workflows/triagem-email-suporte.yaml
 - fases/fase-1-workflows.md
 - fases/fase-2-workflows-contratos.md
